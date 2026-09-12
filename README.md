@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: yuan1521913/code-audit-action@v1
+      - uses: yuan1521913/code-audit-action@v0
         with:
           path: .
           format: sarif
