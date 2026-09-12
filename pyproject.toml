@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "code-audit-community-action"
+version = "0.1.0"
+description = "GitHub Action wrapper for the Code Audit Community scanner."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+
+[project.scripts]
+code-audit-community-action = "codeaudit_community.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

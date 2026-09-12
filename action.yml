@@ -1,0 +1,65 @@
+name: Code Audit Community
+description: Scan a repository for common dangerous code patterns and export SARIF or JSON.
+author: yuan1521913
+branding:
+  icon: shield
+  color: blue
+
+inputs:
+  path:
+    description: File or directory to scan.
+    required: false
+    default: .
+  format:
+    description: Report format: sarif, json, or markdown.
+    required: false
+    default: sarif
+  output:
+    description: Output file path.
+    required: false
+    default: code-audit-results.sarif
+  fail-on:
+    description: Fail when a finding at this severity exists. Supported values are high or none.
+    required: false
+    default: high
+  ignore:
+    description: Newline-separated fnmatch patterns to ignore.
+    required: false
+    default: ""
+  skip-rule:
+    description: Newline-separated rule names to skip.
+    required: false
+    default: ""
+
+outputs:
+  total:
+    description: Total number of findings.
+    value: ${{ steps.scan.outputs.total }}
+  high:
+    description: Number of high-severity findings.
+    value: ${{ steps.scan.outputs.high }}
+  medium:
+    description: Number of medium-severity findings.
+    value: ${{ steps.scan.outputs.medium }}
+  low:
+    description: Number of low-severity findings.
+    value: ${{ steps.scan.outputs.low }}
+  report:
+    description: Report output path.
+    value: ${{ steps.scan.outputs.report }}
+
+runs:
+  using: composite
+  steps:
+    - id: scan
+      shell: bash
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+        INPUT_FORMAT: ${{ inputs.format }}
+        INPUT_OUTPUT: ${{ inputs.output }}
+        INPUT_FAIL_ON: ${{ inputs.fail-on }}
+        INPUT_IGNORE: ${{ inputs.ignore }}
+        INPUT_SKIP_RULE: ${{ inputs.skip-rule }}
+      run: |
+        python -m pip install --disable-pip-version-check "${{ github.action_path }}"
+        python "${{ github.action_path }}/scripts/run_action.py"
