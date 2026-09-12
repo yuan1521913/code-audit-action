@@ -11,7 +11,7 @@ inputs:
     required: false
     default: .
   format:
-    description: Report format: sarif, json, or markdown.
+    description: "Report format: sarif, json, or markdown."
     required: false
     default: sarif
   output:
