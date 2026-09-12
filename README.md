@@ -71,6 +71,17 @@ The community action checks:
 Findings are review candidates, not proof that an exploit exists. A clean scan
 does not prove that the repository is safe.
 
+## Community and Pro
+
+- Community scanner and rules:
+  https://github.com/yuan1521913/code-audit-community
+- Pro source package and commercial edition:
+  https://github.com/yuan1521913/code-audit-cli
+
+The Pro edition adds the complete multilingual rule set, HTML and SARIF report
+generation in the CLI, baseline workflow, priority support, and commercial
+rule updates.
+
 ## Development
 
 ```bash
