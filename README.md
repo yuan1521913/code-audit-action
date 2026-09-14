@@ -88,6 +88,10 @@ rule updates.
 python -m unittest discover -s tests -v
 ```
 
+Troubleshooting:
+
+- [Permissions, SARIF and fork pull requests](docs/troubleshooting.md)
+
 ## License
 
 MIT. See `LICENSE`.
